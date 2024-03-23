@@ -8,4 +8,48 @@ body {
   font-family: Times New Roman, Times, serif;
   line-height: 1.5em;
 }
+
+.addCourseSection {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  padding: .5rem;
+  display: flex;
+}
+
+.form {
+  background-color: #dbd0d0;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  box-shadow: 1px 2px 2px 1px;
+}
+
+input {
+  float: right;
+  padding: .1rem;
+}
+
+.label-div {
+  padding: .4rem;
+}
+
+table {
+  width: 100%;
+}
+
+.wrapper {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1.2rem auto 0;
+  display: flex;
+}
+
+.wrapper h1 {
+  text-align: center;
+}
 /*# sourceMappingURL=index.8c1c22dc.css.map */

@@ -1,1 +1,8 @@
 @use "./layout/body.scss";
+
+@use "./components/form.scss";
+@use "./components/inputs.scss";
+@use "./components/labels.scss";
+@use "./components/table.scss";
+
+@use "./pages/index.scss";

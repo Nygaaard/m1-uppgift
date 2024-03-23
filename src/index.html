@@ -8,6 +8,52 @@
     <script src="js/main.ts" type="module"></script>
   </head>
   <body>
-    <h1>DT208G - uppgift, moment 1</h1>
+    <div class="wrapper">
+      <h1>DT208G - uppgift, moment 1</h1>
+      <section class="addCourseSection">
+        <h2>Lägg till kurser</h2>
+        <form class="form">
+          <div class="label-div">
+            <label for="code">Kurskod</label>
+            <input type="text" name="code" id="courseCode" />
+          </div>
+          <div class="label-div">
+            <label for="name">Kursnamn</label>
+            <input type="text" name="name" id="courseName" />
+          </div>
+          <div class="label-div">
+            <label for="prog">Progression</label>
+            <input type="text" name="prog" id="prog" />
+          </div>
+          <div class="label-div">
+            <label for="syllabus">Kursplan</label>
+            <input type="text" name="syllabus" id="syllabus" />
+          </div>
+        </form>
+      </section>
+      <section class="addCourseSection">
+        <h2>Tillagda kurser</h2>
+        <table>
+          <thead>
+            <tr>
+              <td style="width: 30%">Kurskod</td>
+              <td style="width: 30%">Kursnamn</td>
+              <td style="width: 20%">Progression</td>
+              <td style="width: 20%">Kursplan</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tbody>
+                <tr>
+                    <td>DT057G</td>
+                    <td>Webbutveckling 1</td>
+                    <td>A</td>
+                    <td><a href="https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/DT057G/">Kursplan</a></td>
+                </tr>
+            </tbody>
+          </tbody>
+        </table>
+      </section>
+    </div>
   </body>
 </html>
