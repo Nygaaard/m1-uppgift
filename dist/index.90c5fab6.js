@@ -584,7 +584,63 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"hYrgI":[function(require,module,exports) {
+var _addCourses = require("./addCourses");
+(0, _addCourses.addCourses)();
 
-},{}]},["3L0Bc","hYrgI"], "hYrgI", "parcelRequire0bcb")
+},{"./addCourses":"csNK8"}],"csNK8":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "addCourses", ()=>addCourses);
+var _printCourses = require("./printCourses");
+const addEl = document.getElementById("add");
+function addCourses() {
+    addEl.addEventListener("click", function() {
+        event?.preventDefault();
+        (0, _printCourses.printCourses)();
+    });
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./printCourses":"ip6CE"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"ip6CE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "printCourses", ()=>printCourses);
+const courseCodeEl = document.getElementById("courseCode");
+const courseNameEl = document.getElementById("courseName");
+const progEl = document.getElementById("prog");
+const syllabusEl = document.getElementById("syllabus");
+const coursesEl = document.getElementById("courses");
+function printCourses() {}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["3L0Bc","hYrgI"], "hYrgI", "parcelRequire0bcb")
 
 //# sourceMappingURL=index.90c5fab6.js.map
