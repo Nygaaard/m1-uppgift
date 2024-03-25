@@ -12,6 +12,8 @@ export function printCourses() {
         <td>${courseNameEl.value}</td>
         <td>${progEl.value}</td>
         <td>${syllabusEl.value}</td>
+        <td><button class="update-btn">Uppdatera</button></td>
+        <td><button class="save-btn">Spara</button></td>
     </tr>
     `;
 }

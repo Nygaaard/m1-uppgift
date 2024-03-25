@@ -585,9 +585,12 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"hYrgI":[function(require,module,exports) {
 var _addCourses = require("./addCourses");
+var _uppdateCourses = require("./uppdateCourses");
+// import { saveChanges } from "./saveCourses";
 (0, _addCourses.addCourses)();
+(0, _uppdateCourses.updateCourse)(); // saveChanges();
 
-},{"./addCourses":"csNK8"}],"csNK8":[function(require,module,exports) {
+},{"./addCourses":"csNK8","./uppdateCourses":"2h5w8"}],"csNK8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "addCourses", ()=>addCourses);
@@ -646,8 +649,25 @@ function printCourses() {
         <td>${courseNameEl.value}</td>
         <td>${progEl.value}</td>
         <td>${syllabusEl.value}</td>
+        <td><button class="update-btn">Uppdatera</button></td>
+        <td><button class="save-btn">Spara</button></td>
     </tr>
     `;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2h5w8":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "updateCourse", ()=>updateCourse);
+function updateCourse() {
+    document.querySelectorAll(".update-btn").forEach((button)=>{
+        button.addEventListener("click", function() {
+            const row = this.parentNode.parentNode;
+            row.querySelectorAll("td:not(:last-child)").forEach((cell)=>{
+                cell.contentEditable = true;
+            });
+        });
+    });
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["3L0Bc","hYrgI"], "hYrgI", "parcelRequire0bcb")
