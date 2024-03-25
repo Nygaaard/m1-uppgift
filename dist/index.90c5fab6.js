@@ -639,7 +639,16 @@ const courseNameEl = document.getElementById("courseName");
 const progEl = document.getElementById("prog");
 const syllabusEl = document.getElementById("syllabus");
 const coursesEl = document.getElementById("courses");
-function printCourses() {}
+function printCourses() {
+    coursesEl.innerHTML += `
+    <tr>
+        <td>${courseCodeEl.value}</td>
+        <td>${courseNameEl.value}</td>
+        <td>${progEl.value}</td>
+        <td>${syllabusEl.value}</td>
+    </tr>
+    `;
+}
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["3L0Bc","hYrgI"], "hYrgI", "parcelRequire0bcb")
 

@@ -5,4 +5,13 @@ const syllabusEl = document.getElementById("syllabus") as HTMLInputElement;
 
 const coursesEl = document.getElementById("courses") as HTMLTableElement;
 
-export function printCourses() {}
+export function printCourses() {
+  coursesEl.innerHTML += `
+    <tr>
+        <td>${courseCodeEl.value}</td>
+        <td>${courseNameEl.value}</td>
+        <td>${progEl.value}</td>
+        <td>${syllabusEl.value}</td>
+    </tr>
+    `;
+}
