@@ -18,3 +18,9 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
+@media all and (max-width: 800px) {
+  .addCourseSection {
+    width: 70%;
+  }
+}

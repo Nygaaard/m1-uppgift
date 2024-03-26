@@ -28,15 +28,17 @@ export function addCourse(): void {
 function saveCourse(course: CourseInfo): void {
   const existingCourses = JSON.parse(
     window.localStorage.getItem("courses") || "[]"
+  ) as CourseInfo[];
+
+  const isUnique = existingCourses.every(
+    (existingCourse) => existingCourse.courseCode !== course.courseCode
   );
 
-  if (existingCourses) {
-    const courses = existingCourses as CourseInfo[];
-    courses.push(course);
-
-    window.localStorage.setItem("courses", JSON.stringify(courses));
+  if (isUnique) {
+    existingCourses.push(course);
+    window.localStorage.setItem("courses", JSON.stringify(existingCourses));
+    location.reload();
   } else {
-    window.localStorage.setItem("courses", JSON.stringify(course));
+    alert("Kurskoden finns redan. Ange en unik kurskod.");
   }
-  location.reload();
 }

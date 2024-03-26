@@ -14,7 +14,7 @@ export function getCourses(): void {
         <td>${course.courseName}</td>
         <td>${course.prog}</td>
         <td><a href="${course.syllabus}">Länk till kursplan</a></td>
-        <td><i class="fa-solid fa-circle-info" class="info-link"></i></td>
+        <td><i class="fa-solid fa-circle-info "></i></td>
     </tr>
     `;
   });

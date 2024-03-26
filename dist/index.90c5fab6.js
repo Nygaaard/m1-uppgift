@@ -616,7 +616,7 @@ function getCourses() {
         <td>${course.courseName}</td>
         <td>${course.prog}</td>
         <td><a href="${course.syllabus}">L\xe4nk till kursplan</a></td>
-        <td><i class="fa-solid fa-circle-info" class="info-link"></i></td>
+        <td><i class="fa-solid fa-circle-info "></i></td>
     </tr>
     `;
     });
@@ -675,12 +675,12 @@ function addCourse() {
 }
 function saveCourse(course) {
     const existingCourses = JSON.parse(window.localStorage.getItem("courses") || "[]");
-    if (existingCourses) {
-        const courses = existingCourses;
-        courses.push(course);
-        window.localStorage.setItem("courses", JSON.stringify(courses));
-    } else window.localStorage.setItem("courses", JSON.stringify(course));
-    location.reload();
+    const isUnique = existingCourses.every((existingCourse)=>existingCourse.courseCode !== course.courseCode);
+    if (isUnique) {
+        existingCourses.push(course);
+        window.localStorage.setItem("courses", JSON.stringify(existingCourses));
+        location.reload();
+    } else alert("Kurskoden finns redan. Ange en unik kurskod.");
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["3L0Bc","hYrgI"], "hYrgI", "parcelRequire0bcb")

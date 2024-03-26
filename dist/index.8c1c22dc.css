@@ -51,6 +51,12 @@ body {
   box-shadow: 1px 2px 2px 1px;
 }
 
+@media (width <= 800px) {
+  .addCourseSection {
+    width: 70%;
+  }
+}
+
 input {
   float: right;
   width: 80%;
@@ -107,6 +113,16 @@ table {
   width: 100%;
 }
 
+.table-row, td {
+  padding: .5rem;
+}
+
+@media (width <= 650px) {
+  table {
+    width: 80%;
+  }
+}
+
 button {
   background-color: beige;
   border-radius: 5px;
@@ -124,7 +140,7 @@ button:hover {
   margin-top: 1rem;
 }
 
-.info-link:hover {
+#info-link:hover {
   cursor: pointer;
 }
 
