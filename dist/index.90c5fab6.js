@@ -586,24 +586,45 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"hYrgI":[function(require,module,exports) {
 var _addCourses = require("./addCourses");
 var _uppdateCourses = require("./uppdateCourses");
-// import { saveChanges } from "./saveCourses";
-(0, _addCourses.addCourses)();
-(0, _uppdateCourses.updateCourse)(); // saveChanges();
+var _saveCourses = require("./saveCourses");
+var _getCourses = require("./getCourses");
+(0, _addCourses.addCourse)();
+(0, _uppdateCourses.updateCourse)();
+(0, _saveCourses.saveChanges)();
+(0, _getCourses.getCourses)();
 
-},{"./addCourses":"csNK8","./uppdateCourses":"2h5w8"}],"csNK8":[function(require,module,exports) {
+},{"./addCourses":"csNK8","./uppdateCourses":"2h5w8","./saveCourses":"4MsOO","./getCourses":"doG7q"}],"csNK8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "addCourses", ()=>addCourses);
-var _printCourses = require("./printCourses");
+parcelHelpers.export(exports, "addCourse", ()=>addCourse);
+const courseCodeEl = document.getElementById("courseCode");
+const courseNameEl = document.getElementById("courseName");
+const progEl = document.getElementById("prog");
+const syllabusEl = document.getElementById("syllabus");
 const addEl = document.getElementById("add");
-function addCourses() {
-    addEl.addEventListener("click", function() {
+function addCourse() {
+    addEl.addEventListener("click", function(event) {
         event?.preventDefault();
-        (0, _printCourses.printCourses)();
+        const course = {
+            courseCode: courseCodeEl.value,
+            courseName: courseNameEl.value,
+            prog: progEl.value,
+            syllabus: syllabusEl.value
+        };
+        saveCourse(course);
     });
 }
+function saveCourse(course) {
+    const existingCourses = JSON.parse(window.localStorage.getItem("courses") || "[]");
+    if (existingCourses) {
+        const courses = existingCourses;
+        courses.push(course);
+        window.localStorage.setItem("courses", JSON.stringify(courses));
+    } else window.localStorage.setItem("courses", JSON.stringify(course));
+    location.reload();
+}
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./printCourses":"ip6CE"}],"gkKU3":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -633,29 +654,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"ip6CE":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "printCourses", ()=>printCourses);
-const courseCodeEl = document.getElementById("courseCode");
-const courseNameEl = document.getElementById("courseName");
-const progEl = document.getElementById("prog");
-const syllabusEl = document.getElementById("syllabus");
-const coursesEl = document.getElementById("courses");
-function printCourses() {
-    coursesEl.innerHTML += `
-    <tr>
-        <td>${courseCodeEl.value}</td>
-        <td>${courseNameEl.value}</td>
-        <td>${progEl.value}</td>
-        <td>${syllabusEl.value}</td>
-        <td><button class="update-btn">Uppdatera</button></td>
-        <td><button class="save-btn">Spara</button></td>
-    </tr>
-    `;
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2h5w8":[function(require,module,exports) {
+},{}],"2h5w8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "updateCourse", ()=>updateCourse);
@@ -667,6 +666,33 @@ function updateCourse() {
                 cell.contentEditable = true;
             });
         });
+    });
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4MsOO":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "saveChanges", ()=>saveChanges);
+function saveChanges() {}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"doG7q":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getCourses", ()=>getCourses);
+const coursesEl = document.getElementById("courses");
+function getCourses() {
+    const courses = JSON.parse(window.localStorage.getItem("courses") || "[]");
+    courses?.map((course)=>{
+        coursesEl.innerHTML += `
+    <tr>
+        <td>${course.courseCode}</td>
+        <td>${course.courseName}</td>
+        <td>${course.prog}</td>
+        <td><a href="${course.syllabus}">L\xe4nk till kursplan</a></td>
+        <td><button class="update-btn">Uppdatera</button></td>
+        <td><button class="delete-btn">Radera</button></td>
+    </tr>
+    `;
     });
 }
 

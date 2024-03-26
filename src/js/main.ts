@@ -1,7 +1,9 @@
-import { addCourses } from "./addCourses";
+import { addCourse } from "./addCourses";
 import { updateCourse } from "./uppdateCourses";
-// import { saveChanges } from "./saveCourses";
+import { saveChanges } from "./saveCourses";
+import { getCourses } from "./getCourses";
 
-addCourses();
+addCourse();
 updateCourse();
-// saveChanges();
+saveChanges();
+getCourses();
