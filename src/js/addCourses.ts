@@ -1,12 +1,10 @@
-import { getCourses } from "./getCourses";
-
 const courseCodeEl = document.getElementById("courseCode") as HTMLInputElement;
 const courseNameEl = document.getElementById("courseName") as HTMLInputElement;
 const progEl = document.getElementById("prog") as HTMLInputElement;
 const syllabusEl = document.getElementById("syllabus") as HTMLInputElement;
 const addEl = document.getElementById("add") as HTMLButtonElement;
 
-export interface Course {
+export interface CourseInfo {
   courseCode: string;
   courseName: string;
   prog: string;
@@ -17,7 +15,7 @@ export function addCourse(): void {
   addEl.addEventListener("click", function (event) {
     event?.preventDefault();
 
-    const course: Course = {
+    const course: CourseInfo = {
       courseCode: courseCodeEl.value,
       courseName: courseNameEl.value,
       prog: progEl.value,
@@ -27,13 +25,13 @@ export function addCourse(): void {
   });
 }
 
-function saveCourse(course: Course): void {
+function saveCourse(course: CourseInfo): void {
   const existingCourses = JSON.parse(
     window.localStorage.getItem("courses") || "[]"
   );
 
   if (existingCourses) {
-    const courses = existingCourses as Course[];
+    const courses = existingCourses as CourseInfo[];
     courses.push(course);
 
     window.localStorage.setItem("courses", JSON.stringify(courses));

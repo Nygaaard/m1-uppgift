@@ -1,0 +1,17 @@
+button {
+  width: 80px;
+  height: 30px;
+  margin: 0.3rem;
+  background-color: beige;
+  border-radius: 5px;
+}
+button:hover {
+  cursor: pointer;
+  background-color: rgb(138, 138, 121);
+}
+#save {
+  margin-top: 1rem;
+}
+#add {
+  margin-top: 1rem;
+}

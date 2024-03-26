@@ -9,6 +9,12 @@ body {
   line-height: 1.5em;
 }
 
+.info-box {
+  background-color: #0ff;
+  width: 80%;
+  height: auto;
+}
+
 .addCourseSection {
   flex-direction: column;
   justify-content: center;
@@ -32,12 +38,43 @@ input {
   padding: .1rem;
 }
 
+.text-box {
+  flex-direction: column;
+  margin-top: 1rem;
+  display: flex;
+}
+
 .label-div {
   padding: .4rem;
 }
 
+a {
+  color: #000;
+}
+
+a:hover {
+  color: #686565;
+}
+
 table {
   width: 100%;
+}
+
+button {
+  background-color: beige;
+  border-radius: 5px;
+  width: 80px;
+  height: 30px;
+  margin: .3rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #8a8a79;
+}
+
+#save, #add {
+  margin-top: 1rem;
 }
 
 .wrapper {

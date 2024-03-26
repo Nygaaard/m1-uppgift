@@ -2,3 +2,8 @@ input {
   float: right;
   padding: 0.1rem;
 }
+.text-box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}

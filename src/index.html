@@ -15,22 +15,28 @@
         <form class="form">
           <div class="label-div">
             <label for="code">Kurskod</label>
-            <input type="text" name="code" id="courseCode" />
+            <input type="text" name="code" id="courseCode" placeholder="DT208G"/>
           </div>
           <div class="label-div">
             <label for="name">Kursnamn</label>
-            <input type="text" name="name" id="courseName" />
+            <input type="text" name="name" id="courseName" placeholder="Webbutveckling"/>
           </div>
           <div class="label-div">
             <label for="prog">Progression</label>
-            <input type="text" name="prog" id="prog" />
+            <input type="text" name="prog" id="prog" placeholder="A"/>
           </div>
           <div class="label-div">
-            <label for="syllabus">Kursplan (lägg in URL)</label>
-            <input type="text" name="syllabus" id="syllabus" />
+            <label for="syllabus">Kursplan</label>
+            <input type="text" name="syllabus" id="syllabus" placeholder="Länk till webbsidan"/>
           </div>
-          <button id="add">Lägg till</button>
+          <div class="text-box">
+            <label for="more-info">Mer information</label>
+          <textarea name="more-info" id="more-info" cols="40" rows="5" placeholder="Lägg till mer information om kursen..."></textarea>
+          </div>
+          
+          
         </form>
+        <button id="add">Lägg till</button>
       </section>
       <section class="addCourseSection">
         <h2>Kurser</h2>
