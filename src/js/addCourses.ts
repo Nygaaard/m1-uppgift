@@ -26,6 +26,13 @@ export function addCourse(): void {
 }
 
 function saveCourse(course: CourseInfo): void {
+  const validProgValues = ["A", "B"];
+
+  if (!validProgValues.includes(course.prog)) {
+    alert("Progression måste vara antingen 'A' eller 'B'");
+    return;
+  }
+
   const existingCourses = JSON.parse(
     window.localStorage.getItem("courses") || "[]"
   ) as CourseInfo[];

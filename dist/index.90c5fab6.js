@@ -587,8 +587,6 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 var _addCourses = require("./addCourses");
 var _getCourses = require("./getCourses");
 const updateEl = document.getElementById("update");
-const showInfoEl = document.querySelector(".show-info");
-const moreInfoEl = document.getElementById("more-info");
 (0, _addCourses.addCourse)();
 (0, _getCourses.getCourses)();
 updateEl.addEventListener("click", function() {
@@ -596,10 +594,6 @@ updateEl.addEventListener("click", function() {
     tdElements.forEach((td)=>{
         td.contentEditable = "true";
     });
-});
-showInfoEl.addEventListener("click", function() {
-    const moreInfoValue = moreInfoEl.value;
-    alert("Mer information: " + moreInfoValue);
 });
 
 },{"./getCourses":"doG7q","./addCourses":"csNK8"}],"doG7q":[function(require,module,exports) {
@@ -609,14 +603,17 @@ parcelHelpers.export(exports, "getCourses", ()=>getCourses);
 const coursesEl = document.getElementById("courses");
 function getCourses() {
     const courses = JSON.parse(window.localStorage.getItem("courses") || "[]");
-    courses?.map((course)=>{
+    courses?.map((course, index)=>{
         coursesEl.innerHTML += `
     <tr class="table-row">
         <td>${course.courseCode}</td>
         <td>${course.courseName}</td>
         <td>${course.prog}</td>
         <td><a href="${course.syllabus}">L\xe4nk till kursplan</a></td>
-        <td><i class="fa-solid fa-circle-info "></i></td>
+        <td><i class="fa-solid fa-check" id="check-${index}" onclick="updateCourse(
+      ${index},
+      '${course}'
+    )"></i></td>
     </tr>
     `;
     });
@@ -674,6 +671,14 @@ function addCourse() {
     });
 }
 function saveCourse(course) {
+    const validProgValues = [
+        "A",
+        "B"
+    ];
+    if (!validProgValues.includes(course.prog)) {
+        alert("Progression m\xe5ste vara antingen 'A' eller 'B'");
+        return;
+    }
     const existingCourses = JSON.parse(window.localStorage.getItem("courses") || "[]");
     const isUnique = existingCourses.every((existingCourse)=>existingCourse.courseCode !== course.courseCode);
     if (isUnique) {
