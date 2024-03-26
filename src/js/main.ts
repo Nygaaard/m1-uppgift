@@ -8,7 +8,7 @@ getCourses();
 
 updateEl.addEventListener("click", function () {
   const tdElements = document.querySelectorAll(
-    "td"
+    ".editable"
   ) as NodeListOf<HTMLTableCellElement>;
   tdElements.forEach((td) => {
     td.contentEditable = "true";

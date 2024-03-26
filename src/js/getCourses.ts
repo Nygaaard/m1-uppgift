@@ -11,15 +11,19 @@ export function getCourses(): void {
   courses?.map((course, index) => {
     coursesEl.innerHTML += `
     <tr class="table-row">
-        <td>${course.courseCode}</td>
-        <td>${course.courseName}</td>
-        <td>${course.prog}</td>
-        <td><a href="${course.syllabus}">Länk till kursplan</a></td>
-        <td><i class="fa-solid fa-check" id="check-${index}" onclick="updateCourse(
-      ${index},
-      '${course}'
-    )"></i></td>
+        <td id="courseCode-${index}" class="editable">${course.courseCode}</td>
+        <td id="courseName-${index}" class="editable">${course.courseName}</td>
+        <td id="prog-${index}" class="editable">${course.prog}</td>
+        <td ><a href="${course.syllabus}" id="syllabus-${index}">Länk till kursplan</a></td>
+        <td><i class="fa-solid fa-check"></i></td>
     </tr>
     `;
+  });
+  const icons = document.querySelectorAll("i") as NodeListOf<HTMLElement>;
+
+  icons.forEach((icon, index) => {
+    icon.addEventListener("click", function () {
+      updateCourse(index);
+    });
   });
 }

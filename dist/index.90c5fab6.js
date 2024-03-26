@@ -590,7 +590,7 @@ const updateEl = document.getElementById("update");
 (0, _addCourses.addCourse)();
 (0, _getCourses.getCourses)();
 updateEl.addEventListener("click", function() {
-    const tdElements = document.querySelectorAll("td");
+    const tdElements = document.querySelectorAll(".editable");
     tdElements.forEach((td)=>{
         td.contentEditable = "true";
     });
@@ -600,26 +600,30 @@ updateEl.addEventListener("click", function() {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getCourses", ()=>getCourses);
+var _updateCourses = require("./updateCourses");
 const coursesEl = document.getElementById("courses");
 function getCourses() {
     const courses = JSON.parse(window.localStorage.getItem("courses") || "[]");
     courses?.map((course, index)=>{
         coursesEl.innerHTML += `
     <tr class="table-row">
-        <td>${course.courseCode}</td>
-        <td>${course.courseName}</td>
-        <td>${course.prog}</td>
-        <td><a href="${course.syllabus}">L\xe4nk till kursplan</a></td>
-        <td><i class="fa-solid fa-check" id="check-${index}" onclick="updateCourse(
-      ${index},
-      '${course}'
-    )"></i></td>
+        <td id="courseCode-${index}" class="editable">${course.courseCode}</td>
+        <td id="courseName-${index}" class="editable">${course.courseName}</td>
+        <td id="prog-${index}" class="editable">${course.prog}</td>
+        <td ><a href="${course.syllabus}" id="syllabus-${index}">L\xe4nk till kursplan</a></td>
+        <td><i class="fa-solid fa-check"></i></td>
     </tr>
     `;
     });
+    const icons = document.querySelectorAll("i");
+    icons.forEach((icon, index)=>{
+        icon.addEventListener("click", function() {
+            (0, _updateCourses.updateCourse)(index);
+        });
+    });
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./updateCourses":"aNpM7"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -649,7 +653,33 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"csNK8":[function(require,module,exports) {
+},{}],"aNpM7":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "updateCourse", ()=>updateCourse);
+function updateCourse(index) {
+    const courseCodeEl = document.getElementById(`courseCode-${index}`);
+    const courseNameEl = document.getElementById(`courseName-${index}`);
+    const courseProgEl = document.getElementById(`prog-${index}`);
+    const syllabusLink = document.getElementById(`syllabus-${index}`);
+    const courses = JSON.parse(window.localStorage.getItem("courses") || "[]");
+    const course = {
+        courseCode: courseCodeEl.textContent || "",
+        courseName: courseNameEl.textContent || "",
+        prog: courseProgEl.textContent || "",
+        syllabus: syllabusLink.getAttribute("href") || ""
+    };
+    const newCourses = courses;
+    newCourses[index] = course;
+    window.localStorage.setItem("courses", JSON.stringify(newCourses));
+    const tdElements = document.querySelectorAll("td");
+    tdElements.forEach((td)=>{
+        td.contentEditable = "false";
+    });
+    alert("Kursen uppdaterad!");
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"csNK8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "addCourse", ()=>addCourse);

@@ -15,6 +15,10 @@ body {
   height: auto;
 }
 
+.fa-check:hover {
+  cursor: pointer;
+}
+
 @media (width <= 700px) {
   .text-box {
     width: 100%;
