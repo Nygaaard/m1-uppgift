@@ -14,7 +14,6 @@ export function getCourses(): void {
         <td>${course.courseName}</td>
         <td>${course.prog}</td>
         <td><a href="${course.syllabus}">Länk till kursplan</a></td>
-        <td><button class="update-btn">Uppdatera</button></td>
         <td><button class="show-info">Information</button></td>
     </tr>
     `;

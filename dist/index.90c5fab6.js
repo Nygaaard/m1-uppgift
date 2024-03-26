@@ -586,8 +586,16 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"hYrgI":[function(require,module,exports) {
 var _addCourses = require("./addCourses");
 var _getCourses = require("./getCourses");
+const updateEl = document.getElementById("update");
+const saveEl = document.getElementById("save");
 (0, _addCourses.addCourse)();
 (0, _getCourses.getCourses)();
+updateEl.addEventListener("click", function() {
+    const tdElements = document.querySelectorAll("td");
+    tdElements.forEach((td)=>{
+        td.contentEditable = "true";
+    });
+});
 
 },{"./getCourses":"doG7q","./addCourses":"csNK8"}],"doG7q":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -603,7 +611,6 @@ function getCourses() {
         <td>${course.courseName}</td>
         <td>${course.prog}</td>
         <td><a href="${course.syllabus}">L\xe4nk till kursplan</a></td>
-        <td><button class="update-btn">Uppdatera</button></td>
         <td><button class="show-info">Information</button></td>
     </tr>
     `;
