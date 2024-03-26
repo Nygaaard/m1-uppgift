@@ -9,12 +9,12 @@ export function getCourses(): void {
 
   courses?.map((course) => {
     coursesEl.innerHTML += `
-    <tr>
+    <tr class="table-row">
         <td>${course.courseCode}</td>
         <td>${course.courseName}</td>
         <td>${course.prog}</td>
         <td><a href="${course.syllabus}">Länk till kursplan</a></td>
-        <td><button class="show-info">Information</button></td>
+        <td><i class="fa-solid fa-circle-info" class="info-link"></i></td>
     </tr>
     `;
   });

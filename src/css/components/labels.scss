@@ -1,9 +1,35 @@
 .label-div {
   padding: 0.4rem;
+  width: 60%;
 }
 a {
   color: #000;
 }
 a:hover {
   color: #686565;
+}
+
+@media all and (max-width: 1500px) {
+  .label-div {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 1150) {
+  .label-div {
+    display: flex;
+    flex-direction: column;
+  }
+  input {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 650px) {
+  .label-div {
+    width: 100%;
+  }
+  .addCourseSection {
+    width: 90%;
+  }
 }
